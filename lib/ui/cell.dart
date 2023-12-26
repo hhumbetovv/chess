@@ -1,5 +1,6 @@
-import 'package:chess/models/figure.dart';
-import 'package:chess/utility/types.dart';
+import 'package:chess/constants/cell_action.dart';
+import 'package:chess/models/cell_index.dart';
+import 'package:chess/models/figures/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gen/gen.dart';
@@ -7,18 +8,18 @@ import 'package:gen/gen.dart';
 final class Cell extends StatelessWidget {
   const Cell({
     required this.figure,
-    required this.turn,
     required this.index,
     required this.onTap,
+    required this.turn,
     this.isSelected = false,
     this.isTarget = false,
     super.key,
   });
 
   final Figure? figure;
-  final FigureType turn;
   final CellIndex index;
-  final ValueChanged<CellIndex?> onTap;
+  final void Function(CellIndex?, CellAction) onTap;
+  final FigureType turn;
   final bool isSelected;
   final bool isTarget;
 
@@ -28,21 +29,25 @@ final class Cell extends StatelessWidget {
     return ColorName.boardBlack;
   }
 
-  void selectCell() {
-    if (figure != null) {
-      if (isSelected) {
-        onTap(null);
-      } else {
-        onTap((ver: index.ver, hor: index.hor));
-      }
+  void onCellTap() {
+    if (figure?.type == turn) {
+      onTap(index, isSelected ? CellAction.unselect : CellAction.select);
+    } else if (isTarget) {
+      onTap(index, CellAction.move);
+    } else {
+      onTap(null, CellAction.unselect);
     }
+  }
+
+  bool get isClickable {
+    return figure?.type == turn || isTarget;
   }
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: InkWell(
-        onTap: figure?.type == turn ? selectCell : null,
+        onTap: onCellTap,
         child: AspectRatio(
           aspectRatio: 1,
           child: AnimatedContainer(

@@ -17,6 +17,7 @@ dependencies:
     gen:
         path: module/gen
     flutter_svg: ^2.0.9
+    equatable: ^2.0.5
 
 dev_dependencies:
     flutter_test:

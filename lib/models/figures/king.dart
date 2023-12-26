@@ -1,5 +1,6 @@
-import 'package:chess/models/figure.dart';
-import 'package:chess/utility/types.dart';
+import 'package:chess/models/cell_index.dart';
+import 'package:chess/models/figures/figure.dart';
+import 'package:chess/types/board_list.dart';
 import 'package:gen/gen.dart';
 
 final class King extends Figure {
@@ -22,7 +23,7 @@ final class King extends Figure {
   }
 
   @override
-  List<CellIndex> getTargetCells(CellIndex cell, List<List<Figure?>> board) {
+  List<CellIndex> getTargetCells(CellIndex cell, BoardList board) {
     // TODO: implement getTargetCells
     throw UnimplementedError();
   }

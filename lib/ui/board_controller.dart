@@ -1,16 +1,13 @@
-import 'package:chess/models/bishop.dart';
-import 'package:chess/models/figure.dart';
-import 'package:chess/models/king.dart';
-import 'package:chess/models/knight.dart';
-import 'package:chess/models/pawn.dart';
-import 'package:chess/models/queen.dart';
-import 'package:chess/models/rook.dart';
+import 'package:chess/constants/cell_action.dart';
+import 'package:chess/models/cell_index.dart';
+import 'package:chess/models/figures/index.dart';
+import 'package:chess/types/board_list.dart';
 import 'package:chess/ui/board.dart';
-import 'package:chess/utility/types.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 mixin BoardController on State<Board> {
-  FigureType turn = FigureType.black;
+  FigureType turn = FigureType.white;
   CellIndex? selectedIndex;
   List<CellIndex> targets = [];
   BoardList board = [];
@@ -46,20 +43,62 @@ mixin BoardController on State<Board> {
     }).toList();
   }
 
-  bool checkIsSelected(CellIndex index) {
-    final equalVertical = selectedIndex?.ver == index.ver;
-    final equalHorizontal = selectedIndex?.hor == index.hor;
-    return equalVertical && equalHorizontal;
+  void cellOnTap(CellIndex? index, CellAction action) {
+    if (action == CellAction.unselect) unselect();
+    if (action == CellAction.select) select(index!);
+    if (action == CellAction.move) move(index!);
   }
 
-  void cellOnTap(CellIndex? index) {
+  void unselect() {
+    setState(() {
+      targets = [];
+      selectedIndex = null;
+    });
+  }
+
+  void select(CellIndex index) {
     setState(() {
       targets = [];
       selectedIndex = index;
-      if (index != null) {
-        final figure = board[index.ver][index.hor]!;
-        targets = figure.getTargetCells(index, board);
-      }
+      final figure = board.getFigure(index);
+      targets = figure!.getTargetCells(index, board);
     });
+  }
+
+  void move(CellIndex index) {
+    setState(() {
+      board = board.moveFigure(index, selectedIndex!);
+      unselect();
+      changeTurn();
+    });
+    checkPawnPosition(index);
+  }
+
+  void checkPawnPosition(CellIndex index) {
+    final figure = board.getFigure(index);
+    final edge = figure?.type == FigureType.black ? 7 : 0;
+    if (figure is Pawn && index.ver == edge) {
+      //TODO: Implement Figure selection
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const SimpleDialog(
+            title: Text('Select a Figure'),
+            children: [],
+          );
+        },
+      );
+      if (kDebugMode) {
+        print('Select an Figure');
+      }
+    }
+  }
+
+  void changeTurn() {
+    if (turn == FigureType.white) {
+      turn = FigureType.black;
+    } else {
+      turn = FigureType.white;
+    }
   }
 }

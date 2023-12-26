@@ -1,3 +1,4 @@
+import 'package:chess/models/cell_index.dart';
 import 'package:chess/ui/board_controller.dart';
 import 'package:chess/ui/cell.dart';
 import 'package:flutter/material.dart';
@@ -26,14 +27,15 @@ class _BoardState extends State<Board> with BoardController {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: List.generate(8, (hIndex) {
-                final index = (ver: vIndex, hor: hIndex);
+                final index = CellIndex(ver: vIndex, hor: hIndex);
+                final figure = board[vIndex][hIndex];
                 return Cell(
-                  turn: turn,
                   index: index,
                   onTap: cellOnTap,
+                  turn: turn,
                   isTarget: targets.contains(index),
-                  isSelected: checkIsSelected(index),
-                  figure: board[vIndex][hIndex],
+                  isSelected: index == selectedIndex,
+                  figure: figure,
                 );
               }).toList(),
             );

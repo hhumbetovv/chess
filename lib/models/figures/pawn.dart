@@ -1,5 +1,6 @@
-import 'package:chess/models/figure.dart';
-import 'package:chess/utility/types.dart';
+import 'package:chess/models/cell_index.dart';
+import 'package:chess/models/figures/figure.dart';
+import 'package:chess/types/board_list.dart';
 import 'package:gen/gen.dart';
 
 final class Pawn extends Figure {
@@ -48,28 +49,23 @@ final class Pawn extends Figure {
   }
 
   CellIndex? checkOneForward(CellIndex cell, BoardList board) {
-    final index = (
+    final index = cell.copyWith(
       ver: cell.ver + (type == FigureType.white ? -1 : 1),
-      hor: cell.hor,
     );
     if (!inRange(index.ver)) return null;
-    if (board[index.ver][index.hor] != null) return null;
+    if (board.getFigure(index) != null) return null;
     return index;
   }
 
   CellIndex? checkCorner(CellIndex cell, BoardList board, int movement) {
-    final index = (
+    final index = cell.copyWith(
       ver: cell.ver + (type == FigureType.white ? -1 : 1),
       hor: cell.hor + movement,
     );
     if (!inRange(index.ver)) return null;
     if (!inRange(index.hor)) return null;
-    if (board[index.ver][index.hor] == null) return null;
-    if (board[index.ver][index.hor]!.type == type) return null;
+    if (board.getFigure(index) == null) return null;
+    if (board.getFigure(index)!.type == type) return null;
     return index;
-  }
-
-  bool inRange(int value) {
-    return value >= 0 && value <= 7;
   }
 }
