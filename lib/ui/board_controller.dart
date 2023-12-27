@@ -3,7 +3,7 @@ import 'package:chess/models/cell_index.dart';
 import 'package:chess/models/figures/index.dart';
 import 'package:chess/types/board_list.dart';
 import 'package:chess/ui/board.dart';
-import 'package:flutter/foundation.dart';
+import 'package:chess/ui/select_figure_dialog.dart';
 import 'package:flutter/material.dart';
 
 mixin BoardController on State<Board> {
@@ -74,23 +74,14 @@ mixin BoardController on State<Board> {
     checkPawnPosition(index);
   }
 
-  void checkPawnPosition(CellIndex index) {
+  Future<void> checkPawnPosition(CellIndex index) async {
     final figure = board.getFigure(index);
     final edge = figure?.type == FigureType.black ? 7 : 0;
     if (figure is Pawn && index.ver == edge) {
-      //TODO: Implement Figure selection
-      showDialog(
-        context: context,
-        builder: (context) {
-          return const SimpleDialog(
-            title: Text('Select a Figure'),
-            children: [],
-          );
-        },
-      );
-      if (kDebugMode) {
-        print('Select an Figure');
-      }
+      final newFigure = (await selectFigureDialog(context, figure.type))!;
+      setState(() {
+        board.setFigure(newFigure, index);
+      });
     }
   }
 
