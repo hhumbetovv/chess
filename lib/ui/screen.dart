@@ -1,5 +1,6 @@
 import 'package:chess/ui/board.dart';
 import 'package:flutter/material.dart';
+import 'package:local_hero/local_hero.dart';
 
 final class Screen extends StatelessWidget {
   const Screen({
@@ -16,7 +17,10 @@ final class Screen extends StatelessWidget {
       body: const Center(
         child: Padding(
           padding: EdgeInsets.all(8),
-          child: Board(),
+          child: LocalHeroScope(
+            curve: Curves.easeInOut,
+            child: Board(),
+          ),
         ),
       ),
     );
