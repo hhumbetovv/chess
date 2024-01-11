@@ -1,8 +1,9 @@
-import 'package:chess/presentation/chess_board/state/chess_board_cubit.dart';
-import 'package:chess/presentation/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'presentation/chess_board/state/chess_board_cubit.dart';
+import 'presentation/screen.dart';
 
 void main() {
   runApp(

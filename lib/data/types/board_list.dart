@@ -1,5 +1,5 @@
-import 'package:chess/data/models/piece.dart';
-import 'package:chess/data/types/position.dart';
+import '../models/piece.dart';
+import 'position.dart';
 
 typedef BoardList = List<List<Piece>>;
 

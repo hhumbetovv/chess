@@ -1,11 +1,12 @@
-import 'package:chess/data/models/piece.dart';
-import 'package:chess/data/types/board_list.dart';
-import 'package:chess/data/types/position.dart';
-import 'package:chess/presentation/chess_board/state/chess_board_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gen/gen.dart';
 import 'package:local_hero/local_hero.dart';
+
+import '../../../data/models/piece.dart';
+import '../../../data/types/board_list.dart';
+import '../../../data/types/position.dart';
+import '../state/chess_board_cubit.dart';
 
 final class Cell extends StatelessWidget {
   const Cell({

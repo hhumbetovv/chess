@@ -1,8 +1,9 @@
-import 'package:chess/presentation/chess_board/state/chess_board_cubit.dart';
-import 'package:chess/presentation/chess_board/view/chess_board_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:local_hero/local_hero.dart';
+
+import 'chess_board/state/chess_board_cubit.dart';
+import 'chess_board/view/chess_board_view.dart';
 
 final class Screen extends StatelessWidget {
   const Screen({

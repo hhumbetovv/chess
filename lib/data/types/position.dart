@@ -1,4 +1,4 @@
-import 'package:chess/data/constants/direction.dart';
+import '../constants/direction.dart';
 
 typedef Position = ({int x, int y});
 

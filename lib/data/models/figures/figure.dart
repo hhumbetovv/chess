@@ -1,9 +1,10 @@
-import 'package:chess/data/constants/figure_color.dart';
-import 'package:chess/data/types/board_list.dart';
-import 'package:chess/data/types/position.dart';
 import 'package:equatable/equatable.dart';
 import 'package:gen/gen.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../constants/figure_color.dart';
+import '../../types/board_list.dart';
+import '../../types/position.dart';
 
 abstract class Figure extends Equatable {
   Figure() : id = const Uuid().v4();

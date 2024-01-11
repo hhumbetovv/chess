@@ -1,11 +1,12 @@
-import 'package:chess/data/constants/figure_color.dart';
-import 'package:chess/data/models/piece.dart';
-import 'package:chess/data/types/board_list.dart';
-import 'package:chess/data/types/position.dart';
-import 'package:chess/presentation/chess_board/state/mixin/board_generator.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../data/constants/figure_color.dart';
+import '../../../data/models/piece.dart';
+import '../../../data/types/board_list.dart';
+import '../../../data/types/position.dart';
+import 'mixin/board_generator.dart';
 
 part 'chess_board_state.dart';
 

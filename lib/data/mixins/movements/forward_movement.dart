@@ -1,8 +1,8 @@
-import 'package:chess/data/constants/direction.dart';
-import 'package:chess/data/constants/figure_color.dart';
-import 'package:chess/data/models/figures/figure.dart';
-import 'package:chess/data/types/board_list.dart';
-import 'package:chess/data/types/position.dart';
+import '../../constants/direction.dart';
+import '../../constants/figure_color.dart';
+import '../../models/figures/figure.dart';
+import '../../types/board_list.dart';
+import '../../types/position.dart';
 
 mixin ForwardMovement on Figure {
   Position? checkForward(Position position, BoardList board) {

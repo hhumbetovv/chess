@@ -1,9 +1,10 @@
-import 'package:chess/data/constants/figure_color.dart';
-import 'package:chess/data/mixins/movements/static_movement.dart';
-import 'package:chess/data/models/figures/figure.dart';
-import 'package:chess/data/types/board_list.dart';
-import 'package:chess/data/types/position.dart';
 import 'package:gen/gen.dart';
+
+import '../../constants/figure_color.dart';
+import '../../mixins/movements/static_movement.dart';
+import '../../types/board_list.dart';
+import '../../types/position.dart';
+import 'figure.dart';
 
 class Knight extends Figure with StaticMovement {
   Knight({

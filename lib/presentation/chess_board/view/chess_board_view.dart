@@ -1,10 +1,11 @@
-import 'package:chess/data/constants/figure_color.dart';
-import 'package:chess/presentation/chess_board/components/cell.dart';
-import 'package:chess/presentation/chess_board/components/select_figure_dialog.dart';
-import 'package:chess/presentation/chess_board/state/chess_board_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gen/gen.dart';
+
+import '../../../data/constants/figure_color.dart';
+import '../components/cell.dart';
+import '../components/select_figure_dialog.dart';
+import '../state/chess_board_cubit.dart';
 
 final class ChessBoardView extends StatelessWidget {
   const ChessBoardView({

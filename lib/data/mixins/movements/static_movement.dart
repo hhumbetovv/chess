@@ -1,6 +1,6 @@
-import 'package:chess/data/models/figures/figure.dart';
-import 'package:chess/data/types/board_list.dart';
-import 'package:chess/data/types/position.dart';
+import '../../models/figures/figure.dart';
+import '../../types/board_list.dart';
+import '../../types/position.dart';
 
 mixin StaticMovement on Figure {
   List<Position> getPossibleLegalTargets(List<Position> possibleTargets, BoardList board) {

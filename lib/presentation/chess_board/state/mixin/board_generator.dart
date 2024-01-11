@@ -1,7 +1,7 @@
-import 'package:chess/data/constants/figure_color.dart';
-import 'package:chess/data/models/figures/figure.dart';
-import 'package:chess/data/models/figures/index.dart';
-import 'package:chess/data/models/piece.dart';
+import '../../../../data/constants/figure_color.dart';
+import '../../../../data/models/figures/figure.dart';
+import '../../../../data/models/figures/index.dart';
+import '../../../../data/models/piece.dart';
 
 mixin BoardGenerate {
   List<Figure> _getFigures(FigureColor color) {

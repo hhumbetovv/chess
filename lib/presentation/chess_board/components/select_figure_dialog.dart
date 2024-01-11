@@ -1,7 +1,8 @@
-import 'package:chess/data/constants/figure_color.dart';
-import 'package:chess/data/models/figures/figure.dart';
-import 'package:chess/data/models/figures/index.dart';
 import 'package:flutter/material.dart';
+
+import '../../../data/constants/figure_color.dart';
+import '../../../data/models/figures/figure.dart';
+import '../../../data/models/figures/index.dart';
 
 Future<Figure?> selectFigureDialog(BuildContext context, FigureColor color) {
   return showDialog(
