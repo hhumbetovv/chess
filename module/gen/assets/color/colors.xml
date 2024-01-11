@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="active">#7B61FF</color>
+    <color name="danger">#FF6161</color>
+    <color name="boardBlack">#B7C0D8</color>
+    <color name="boardWhite">#E8EDF9</color>
+</resources>
